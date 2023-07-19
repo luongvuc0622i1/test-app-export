@@ -1,0 +1,13 @@
+.col {
+    border-width: 1px;
+    border-color: lightgray;
+    border-style: solid;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+  
+    /* additional style */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

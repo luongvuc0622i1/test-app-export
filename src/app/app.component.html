@@ -1,2 +1,27 @@
-<input type="file" (change)="onFileChange($event)"/>
-<button (click)="onExport()">Export</button>
+<div class="container">
+    <div class="row">
+      <div class="col col-4">
+        <form>
+          <div class="form-group">
+            <label for="inputFile">Chọn File</label>
+            <input class="form-control" type="file" (change)="onFileChange($event)" />
+          </div>
+          <div class="form-group">
+            <label for="inputReport">Chọn mẫu Report</label>
+            <select class="form-control" (click)="clickSelect()" >
+              <option value="default" selected disabled hidden >Chọn kiểu Report</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-primary" style="float: right;" (click)="onExport()" >Xuất report</button>
+          </div>
+        </form>
+      </div>
+      <div class="col" style="margin-left: 20px;" ></div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <!-- show pdf -->
+      </div>
+    </div>
+  </div>

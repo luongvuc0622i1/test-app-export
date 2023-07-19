@@ -16,4 +16,8 @@ export class ExportService {
   generateReport(reqBody: ReqBody) {
     return this.http.post(API_URL + `/generate-report`, reqBody);
   }
+
+  getAll() {
+    return this.http.get(API_URL + `/list-report`);
+  }
 }

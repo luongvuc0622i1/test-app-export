@@ -11,9 +11,22 @@ export class AppComponent {
   private file:any;
   private fileName:string = '';
   private filePath:string = '';
-  private reportName:string = '';
+  private data:any;
 
-  constructor(private fireStorage: AngularFireStorage, private exportService: ExportService) {}
+  constructor(private fireStorage: AngularFireStorage, private exportService: ExportService) {
+    this.exportService.getAll().subscribe(
+      (response: any) => {
+        this.data = response;
+      }, 
+      (error: any) => {
+          console.log(error)
+      }
+    );
+  }
+
+  clickSelect() {
+    console.log(this.data);
+  }
 
   onFileChange(event: any) {
     this.file = event.target.files[0];
@@ -34,7 +47,9 @@ export class AppComponent {
       "reportId": 1
     }).subscribe(
       (response: any) => {
-        this.reportName = response.msg;
+        const byteArray=new Uint8Array(atob(response.msg).split('').map(char =>char.charCodeAt(0)))
+        const file = new Blob([byteArray], {  type: "application/pdf" });
+        window.open(URL.createObjectURL(file));
       }, 
       (error: any) => {
           console.log(error)
